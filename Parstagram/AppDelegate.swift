@@ -11,6 +11,8 @@ import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var window: UIWindow?
 
 
 
@@ -26,7 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(with: parseConfig)
         
         // --- end copy
-
+        
+       if PFUser.current() != nil{
+              let main = UIStoryboard(name: "Main", bundle: nil)
+       
+              let feedNavigationController = main.instantiateViewController(withIdentifier: "FeedNavigationController")
+              
+        window?.rootViewController = feedNavigationController
+          }
         return true
     }
 
